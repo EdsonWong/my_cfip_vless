@@ -50,16 +50,30 @@
       "disable_expire": false
     },
     "inbounds": [
-      {
-        "type": "mixed",
-        "tag": "mixed-in",
-        "listen": "::",
-        "listen_port": 5353,
-        "tcp_fast_open": true,
-        "udp_fragment": true,
-        "sniff": true,
-        "set_system_proxy": true
-      }
+        {
+            "type": "tun",
+            "inet4_address": "172.19.0.1/30",
+            "mtu": 9000,
+            "auto_route": true,
+            "strict_route": true,
+            "sniff": true,
+            "endpoint_independent_nat": false,
+            "stack": "system",
+            "platform": {
+                "http_proxy": {
+                    "enabled": true,
+                    "server": "127.0.0.1",
+                    "server_port": 2080
+                }
+            }
+        },
+        {
+            "type": "mixed",
+            "listen": "127.0.0.1",
+            "listen_port": 2080,
+            "sniff": true,
+            "users": []
+        }
     ],
     "outbounds": [
         {
@@ -268,28 +282,28 @@
           "tag": "geoip-cn",
           "type": "remote",
           "format": "binary",
-          "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
+          "url": "https://raw.staticdn.net/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
           "download_detour": "proxy"
         },
         {
           "tag": "geosite-cn",
           "type": "remote",
           "format": "binary",
-          "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-cn.srs",
+          "url": "https://raw.staticdn.net/SagerNet/sing-geosite/rule-set/geosite-cn.srs",
           "download_detour": "proxy"
         },
         {
           "tag": "geosite-private",
           "type": "remote",
           "format": "binary",
-          "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-private.srs",
+          "url": "https://raw.staticdn.net/SagerNet/sing-geosite/rule-set/geosite-private.srs",
           "download_detour": "proxy"
         },
         {
           "tag": "geosite-category-ads-all",
           "type": "remote",
           "format": "binary",
-          "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-ads-all.srs",
+          "url": "https://raw.staticdn.net/SagerNet/sing-geosite/rule-set/geosite-category-ads-all.srs",
           "download_detour": "proxy"
         }
       ],
