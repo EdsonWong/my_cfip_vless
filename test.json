@@ -1,0 +1,315 @@
+{
+    "log": {
+        "level": "debug",
+        "timestamp": true
+    },
+    "experimental": {
+        "clash_api": {
+            "external_controller": "127.0.0.1:9191",
+            "external_ui_download_url": "",
+            "external_ui_download_detour": "",
+            "external_ui": "ui",
+            "secret": "",
+            "default_mode": "rule"
+        },
+        "cache_file": {
+            "enabled": true,
+            "store_fakeip": false
+        }
+    },
+    "dns": {
+        "fakeip": {
+            "enabled": true,
+            "inet4_range": "198.18.0.0/15",
+            "inet6_range": "fc00::/18"
+        },
+        "independent_cache": true,
+        "rules": [
+            {
+                "outbound": [
+                    "any"
+                ],
+                "server": "local"
+            },
+            {
+                "disable_cache": true,
+                "geosite": [
+                    "category-ads-all"
+                ],
+                "server": "block"
+            },
+            {
+                "query_type": [
+                    "A",
+                    "AAAA"
+                ],
+                "rewrite_ttl": 1,
+                "server": "fakeip"
+            },
+            {
+                "clash_mode": "global",
+                "server": "remote"
+            },
+            {
+                "clash_mode": "direct",
+                "server": "local"
+            },
+            {
+                "mode": "and",
+                "rules": [
+                    {
+                        "geosite": "cn@!cn",
+                        "invert": true
+                    },
+                    {
+                        "geosite": [
+                            "cn",
+                            "geolocation-!cn@cn"
+                        ]
+                    }
+                ],
+                "server": "local",
+                "type": "logical"
+            }
+        ],
+        "servers": [
+            {
+                "address": "https://1.1.1.1/dns-query",
+                "detour": "select",
+                "tag": "remote"
+            },
+            {
+                "address": "https://223.5.5.5/dns-query",
+                "detour": "direct",
+                "tag": "local"
+            },
+            {
+                "address": "rcode://success",
+                "tag": "block"
+            },
+            {
+                "address": "fakeip",
+                "tag": "fakeip"
+            }
+        ],
+        "strategy": "prefer_ipv4"
+    },
+    "inbounds": [
+        {
+            "type": "tun",
+            "inet4_address": "172.19.0.1/30",
+            "mtu": 9000,
+            "auto_route": true,
+            "strict_route": true,
+            "sniff": true,
+            "endpoint_independent_nat": false,
+            "stack": "system",
+            "platform": {
+                "http_proxy": {
+                    "enabled": true,
+                    "server": "127.0.0.1",
+                    "server_port": 2080
+                }
+            }
+        },
+        {
+            "type": "mixed",
+            "listen": "127.0.0.1",
+            "listen_port": 2080,
+            "sniff": true,
+            "users": []
+        }
+    ],
+    "outbounds": [
+        {
+            "tag": "select",
+            "type": "selector",
+            "default": "1",
+            "outbounds": [
+                "1",
+                "2",
+                "3"
+            ]
+        },
+        {
+            "tag": "1",
+            "type": "vless",
+            "server": "104.16.54.67",
+            "server_port": 80,
+            "uuid": "b2a19f4c-8abe-41d7-ae59-62b6d995b9a6",
+            "transport": {
+                "type": "ws",
+                "path": "/?ed=2048",
+                "headers": {
+                    "Host": "icon.mark-jones-w.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "2",
+            "type": "vless",
+            "server": "104.16.62.192",
+            "server_port": 80,
+            "uuid": "b2a19f4c-8abe-41d7-ae59-62b6d995b9a6",
+            "transport": {
+                "type": "ws",
+                "path": "/?ed=2048",
+                "headers": {
+                    "Host": "icon.mark-jones-w.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "3",
+            "type": "vless",
+            "server": "104.19.161.62",
+            "server_port": 80,
+            "uuid": "b2a19f4c-8abe-41d7-ae59-62b6d995b9a6",
+            "transport": {
+                "type": "ws",
+                "path": "/?ed=2048",
+                "headers": {
+                    "Host": "icon.mark-jones-w.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "4",
+            "type": "vless",
+            "server": "104.21.24.226",
+            "server_port": 80,
+            "uuid": "b2a19f4c-8abe-41d7-ae59-62b6d995b9a6",
+            "transport": {
+                "type": "ws",
+                "path": "/?ed=2048",
+                "headers": {
+                    "Host": "icon.mark-jones-w.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "5",
+            "type": "vless",
+            "server": "104.19.174.109",
+            "server_port": 80,
+            "uuid": "b2a19f4c-8abe-41d7-ae59-62b6d995b9a6",
+            "transport": {
+                "type": "ws",
+                "path": "/?ed=2048",
+                "headers": {
+                    "Host": "icon.mark-jones-w.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "6",
+            "type": "vless",
+            "server": "104.17.226.195",
+            "server_port": 80,
+            "uuid": "b2a19f4c-8abe-41d7-ae59-62b6d995b9a6",
+            "transport": {
+                "type": "ws",
+                "path": "/?ed=2048",
+                "headers": {
+                    "Host": "icon.mark-jones-w.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "7",
+            "type": "vless",
+            "server": "104.18.37.71",
+            "server_port": 80,
+            "uuid": "b2a19f4c-8abe-41d7-ae59-62b6d995b9a6",
+            "transport": {
+                "type": "ws",
+                "path": "/?ed=2048",
+                "headers": {
+                    "Host": "icon.mark-jones-w.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "8",
+            "type": "vless",
+            "server": "104.18.11.44",
+            "server_port": 80,
+            "uuid": "b2a19f4c-8abe-41d7-ae59-62b6d995b9a6",
+            "transport": {
+                "type": "ws",
+                "path": "/?ed=2048",
+                "headers": {
+                    "Host": "icon.mark-jones-w.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "9",
+            "type": "vless",
+            "server": "104.17.235.242",
+            "server_port": 80,
+            "uuid": "b2a19f4c-8abe-41d7-ae59-62b6d995b9a6",
+            "transport": {
+                "type": "ws",
+                "path": "/?ed=2048",
+                "headers": {
+                    "Host": "icon.mark-jones-w.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "10",
+            "type": "vless",
+            "server": "104.17.225.237",
+            "server_port": 80,
+            "uuid": "b2a19f4c-8abe-41d7-ae59-62b6d995b9a6",
+            "transport": {
+                "type": "ws",
+                "path": "/?ed=2048",
+                "headers": {
+                    "Host": "icon.mark-jones-w.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "direct",
+            "type": "direct"
+        },
+        {
+            "tag": "block",
+            "type": "block"
+        },
+        {
+            "tag": "dns-out",
+            "type": "dns"
+        }
+    ],
+    "route": {
+        "auto_detect_interface": true,
+        "rules": [
+            {
+                "geosite": "category-ads-all",
+                "outbound": "block"
+            },
+            {
+                "outbound": "dns-out",
+                "port": 53
+            },
+            {
+                "clash_mode": "direct",
+                "outbound": "direct"
+            },
+            {
+                "clash_mode": "global",
+                "outbound": "select"
+            },
+            {
+                "geoip": [
+                    "cn",
+                    "private"
+                ],
+                "outbound": "direct"
+            }
+        ]
+    }
+}
