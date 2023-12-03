@@ -321,35 +321,35 @@
                 "type": "remote",
                 "format": "binary",
                 "url": "https://raw.staticdn.net/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
-                "download_detour": "proxy"
+                "download_detour": "direct"
             },
             {
                 "tag": "geosite-cn",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://raw.staticdn.net/SagerNet/sing-geosite/rule-set/geosite-cn.srs",
-                "download_detour": "proxy"
+                "download_detour": "direct"
             },
             {
                 "tag": "geosite-geolocation-!cn",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://raw.staticdn.net/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs",
-                "download_detour": "proxy"
+                "download_detour": "direct"
             },
             {
                 "tag": "geosite-private",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://raw.staticdn.net/SagerNet/sing-geosite/rule-set/geosite-private.srs",
-                "download_detour": "proxy"
+                "download_detour": "direct"
             },
             {
                 "tag": "geosite-category-ads-all",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://raw.staticdn.net/SagerNet/sing-geosite/rule-set/geosite-category-ads-all.srs",
-                "download_detour": "proxy"
+                "download_detour": "direct"
             }
         ],
         "auto_detect_interface": true,
