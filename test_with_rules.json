@@ -334,7 +334,7 @@
                 "tag": "geosite-geolocation-!cn",
                 "type": "remote",
                 "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs",
+                "url": "https://raw.staticdn.net/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs",
                 "download_detour": "proxy"
             },
             {
