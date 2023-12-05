@@ -7,7 +7,7 @@ import subprocess
 # 0 3 * * * cd /Users/mac/my_cfip_vless && /Users/mac/anaconda3/bin/python chooseip_and_jsontosub.py
 
 # 执行 CloudflareST 进行IP优选
-subprocess.run(["/usr/bin/sudo", "./CloudflareST", "-tl", "200", "-sl", "8"], check=True)
+subprocess.run(["/usr/bin/sudo", "./CloudflareST", "-tl", "200", "-sl", "9"], check=True)
 
 # 打开CSV文件并读取IP地址
 with open('/Users/mac/my_cfip_vless/result.csv', 'r') as f:
@@ -55,10 +55,11 @@ with open('/Users/mac/my_cfip_vless/cfipsub.txt', 'w') as f:
     f.write(links_base64)
 
 # Add specific files to staging area
-subprocess.run(["git", "add", "cfipsub.txt", "my_cfip_with_rules.json"], check=True)
+# subprocess.run(["git", "add", "cfipsub.txt", "my_cfip_with_rules.json"], check=True)
+subprocess.run(["git", "add", "."], check=True)
 
 # Commit changes
 subprocess.run(["git", "commit", "-m", "mbp2015"], check=True)
 
 # Force push to the 'sb' branch
-subprocess.run(["git", "push", "-f", "origin", "sb"], check=True)
+subprocess.run(["git", "push", "-f", "origin", "mbp2015"], check=True)
