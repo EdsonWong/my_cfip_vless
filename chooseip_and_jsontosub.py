@@ -7,7 +7,7 @@ import subprocess
 # 0 3 * * 3,5,7 cd /Users/icon/Desktop/cfio_to_github && /Users/ubiloc/anaconda3/bin/python chooseip_and_jsontosub.py
 
 # 执行 CloudflareST 进行IP优选
-subprocess.run(["/usr/bin/sudo", "./CloudflareST", "-tl", "100", "-sl", "10"], check=True)
+subprocess.run(["/usr/bin/sudo", "./CloudflareST", "-tl", "200", "-sl", "9"], check=True)
 
 # 打开CSV文件并读取IP地址
 with open('/Users/icon/Desktop/cfio_to_github/result.csv', 'r') as f:
