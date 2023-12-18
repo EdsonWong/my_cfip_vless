@@ -8,7 +8,7 @@ import os
 # 0 3 * * * cd /Users/mac/my_cfip_vless && /Users/mac/anaconda3/bin/python chooseip_and_jsontosub.py
 
 # 执行 CloudflareST 进行IP优选
-# subprocess.run(["/usr/bin/sudo", "./CloudflareST", "-tl", "200", "-sl", "9"], check=True)
+subprocess.run(["/usr/bin/sudo", "./CloudflareST", "-tl", "200", "-sl", "9"], check=True)
 
 # 获取当前工作路径
 current_dir = os.getcwd()
