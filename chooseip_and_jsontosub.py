@@ -51,9 +51,9 @@ with open(json_path) as f:
 vless_nodes = [node for node in data['outbounds'] if node['type'] == 'vless']
 
 # Generate the links for each node
+i = 1
 links = []
 for node in vless_nodes:
-    i = 1
     link = f"vless://{node['uuid']}@{node['server']}:{node['server_port']}?encryption=none&sni=icon.mark-jones-w.workers.dev&fp=randomized&type=ws&host=icon.mark-jones-w.workers.dev&path=%2F%3Fed%3D2048#icon.EdsonWong.dev{i}"
     i += 1
     links.append(link)
